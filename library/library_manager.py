@@ -8,7 +8,7 @@ def perform_operation(library: Library, user_input_op: MenuOperation) -> bool:
 
     Args:
        user_input_op (MenuOperation): The user input representing the selected operation.
-       library (Library): Clas instance of Library
+       library (Library): Class instance of Library
 
     Returns:
        bool: True if the operation was successful, False otherwise.
@@ -52,6 +52,12 @@ def perform_operation(library: Library, user_input_op: MenuOperation) -> bool:
 
 
 def get_book_details() -> list[str]:
+    """
+    Get details for adding a new book.
+
+    Returns:
+        list[str]: List containing book name, author name, and ISBN.
+    """
     book_name = input("Enter book name: ")
     author_name = input("Enter author name: ")
     isbn_value = input("Enter ISBN: ")
@@ -64,6 +70,12 @@ def get_book_details() -> list[str]:
 
 
 def get_book_update_details() -> [str, dict]:
+    """
+    Get details for updating a book.
+
+    Returns:
+        tuple: ISBN and dictionary containing attributes to update.
+    """
     isbn_value = input("Enter ISBN: ")
     assert isinstance(isbn_value, str) and isbn_value, "ISBN value has to be a non-empty string"
 
@@ -84,6 +96,12 @@ def get_book_update_details() -> [str, dict]:
 
 
 def get_book_delete_details() -> str:
+    """
+    Get details for deleting a book.
+
+    Returns:
+        str: ISBN of the book to delete.
+    """
     isbn_value = input("Enter ISBN: ")
 
     assert isinstance(isbn_value, str) and isbn_value, "ISBN value has to be a non-empty string"
@@ -92,6 +110,12 @@ def get_book_delete_details() -> str:
 
 
 def get_book_search_details() -> dict:
+    """
+    Get details for searching books.
+
+    Returns:
+        dict: Dictionary containing book search criteria.
+    """
     isbn_value = input("Enter ISBN (Press Enter to skip): ")
     book_name = input("Enter book name (Press Enter to skip): ")
     author_name = input("Enter author name (Press Enter to skip): ")
@@ -109,12 +133,18 @@ def get_book_search_details() -> dict:
     # Remove empty values from the dictionary
     details = {key: value for key, value in details.items() if value is not None}
 
-    assert (len(details.keys()) > 0), "Please input at-least one value"
+    assert (len(details.keys()) > 0), "Please input at least one value"
 
     return details
 
 
 def get_user_details() -> list[str]:
+    """
+    Get details for adding a new user.
+
+    Returns:
+        list[str]: List containing username and user ID.
+    """
     user_name = input("Enter name: ")
     user_id = input("Enter id: ")
 
@@ -125,6 +155,12 @@ def get_user_details() -> list[str]:
 
 
 def get_user_update_details() -> [str, dict]:
+    """
+    Get details for updating a user.
+
+    Returns:
+        tuple: User ID and dictionary containing attributes to update.
+    """
     user_id = input("Enter UserID: ")
     assert isinstance(user_id, str) and user_id, "UserID value has to be a non-empty string"
 
@@ -142,6 +178,12 @@ def get_user_update_details() -> [str, dict]:
 
 
 def get_user_delete_details() -> str:
+    """
+    Get details for deleting a user.
+
+    Returns:
+        str: User ID of the user to delete.
+    """
     id_value = input("Enter UserID: ")
 
     assert isinstance(id_value, str) and id_value, "UserID value has to be a non-empty string"
@@ -150,6 +192,12 @@ def get_user_delete_details() -> str:
 
 
 def get_user_search_details() -> dict:
+    """
+    Get details for searching users.
+
+    Returns:
+        dict: Dictionary containing user search criteria.
+    """
     name = input("Enter Name (Press Enter to skip): ")
     user_id = input("Enter UserID (Press Enter to skip): ")
 
@@ -164,12 +212,18 @@ def get_user_search_details() -> dict:
     # Remove empty values from the dictionary
     details = {key: value for key, value in details.items() if value is not None}
 
-    assert (len(details.keys()) > 0), "Please input at-least one value"
+    assert (len(details.keys()) > 0), "Please input at least one value"
 
     return details
 
 
 def get_check_out_details() -> list[str]:
+    """
+    Get details for checking out a book.
+
+    Returns:
+        list[str]: List containing user ID and book ISBN.
+    """
     book_isbn = input("Enter Book ISBN (Press Enter to skip): ")
     user_id = input("Enter UserID (Press Enter to skip): ")
 
@@ -180,6 +234,12 @@ def get_check_out_details() -> list[str]:
 
 
 def get_check_in_details() -> list[str]:
+    """
+    Get details for checking in a book.
+
+    Returns:
+        list[str]: List containing user ID and book ISBN.
+    """
     book_isbn = input("Enter Book ISBN (Press Enter to skip): ")
     user_id = input("Enter UserID (Press Enter to skip): ")
 
@@ -190,6 +250,12 @@ def get_check_in_details() -> list[str]:
 
 
 def get_book_isbn() -> str:
+    """
+    Get details for tracking a book.
+
+    Returns:
+        str: Book ISBN to track.
+    """
     book_isbn = input("Enter Book ISBN (Press Enter to skip): ")
     assert isinstance(book_isbn, str) and book_isbn, "Name value has to be a non-empty string"
 
