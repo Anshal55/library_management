@@ -10,16 +10,21 @@
             "title": "The Great Gatsby",
             "author": "F. Scott Fitzgerald",
             "isbn": "TGG",
-            "checked_out": true
+            "checked_out": false
         }
     },
     "users": {
+        "AS123": {
+            "name": "Anshal",
+            "user_id": "AS123",
+            "book_isbns": [
+                "AGG"
+            ]
+        },
         "J123": {
             "name": "John Doe",
             "user_id": "J123",
-            "book_isbns": [
-                "TGG"
-            ]
+            "book_isbns": []
         }
     }
 }

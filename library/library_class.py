@@ -5,8 +5,20 @@ from uuid import uuid4
 
 
 class Library:
+    _instance = None
+
+    def __new__(cls):
+        if not cls._instance:
+            cls._instance = super(Library, cls).__new__(cls)
+            cls._instance._initialized = False
+        return cls._instance
+
     def __init__(self):
-        """Initialize the Library."""
+        """Initialize the Library only once."""
+        if self._initialized:
+            return
+        self._initialized = True
+
         self.books = {}
         self.users = {}
         self.load_data()
@@ -88,8 +100,6 @@ class Library:
         for found_book in found_books:
             print(f"Title: {found_book.title}, Author: {found_book.author}, ISBN: {found_book.isbn}")
 
-    # Implement other book management methods (update, delete, checkout, check-in, availability)
-
     def add_user(self, name, user_id=None):
         """Add a new user to the library."""
         assert isinstance(name, str), "Invalid data types for User attributes."
@@ -131,6 +141,24 @@ class Library:
         else:
             print(f"No user found with ID {user_id}.")
 
+    def search_users(self, **attributes):
+        """Search for users based on given attributes."""
+        if not attributes:
+            print("Please provide at least one attribute to search for.")
+            return
+
+        found_users = []
+        for user in self.users.values():
+            if all(getattr(user, key, None) == value for key, value in attributes.items()):
+                found_users.append(user)
+
+        if not found_users:
+            print("No users found with the specified attributes.")
+            return
+
+        for found_user in found_users:
+            print(f"Name: {found_user.name}, User ID: {found_user.user_id}")
+
     def check_out_book(self, user_id, isbn):
         """Check out a book to a user."""
         if user_id in self.users and isbn in self.books:
@@ -169,6 +197,10 @@ class Library:
 
             if not book.checked_out:
                 is_available = True
+                print(f"Book with ISBN: {book_isbn} is available")
+
+        if not is_available:
+            print(f"Book with ISBN: {book_isbn} is not available")
 
         return is_available
 
@@ -202,7 +234,7 @@ if __name__ == '__main__':
     l1.check_out_book("J123", "TGG")  # Replace "generated_isbn" with the actual ISBN
     l1.list_books()
     l1.list_users()
-    # l1.check_in_book("J123", "TGG")
+    l1.check_in_book("J123", "TGG")
     l1.list_books()
     l1.list_users()
 
