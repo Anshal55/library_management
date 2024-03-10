@@ -36,6 +36,7 @@ def main():
 
     finally:
         logger.info("Exiting the LMS.")
+        LIBRARY.save_data()
 
 
 if __name__ == "__main__":

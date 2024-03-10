@@ -1,27 +1,9 @@
 {
     "books": {
-        "THUNK": {
-            "title": "The Hobbit",
-            "author": "UNK",
-            "isbn": "THUNK",
-            "checked_out": false
-        },
-        "AGGLMM": {
-            "title": "Anne",
-            "author": "LMM",
-            "isbn": "AGGLMM",
-            "checked_out": false
-        },
-        "ITPJD": {
-            "title": "Introduction to Python",
-            "author": "Jane Doe",
-            "isbn": "ITPJD",
-            "checked_out": false
-        },
-        "LOTRUNK": {
-            "title": "LOTR",
-            "author": "UNK",
-            "isbn": "LOTRUNK",
+        "ISBN-13: 978-0-7432-7356-0": {
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "isbn": "ISBN-13: 978-0-7432-7356-0",
             "checked_out": false
         }
     },
@@ -29,11 +11,6 @@
         "AS123": {
             "name": "Anshal",
             "user_id": "AS123",
-            "book_isbns": []
-        },
-        "JD123": {
-            "name": "John Doe",
-            "user_id": "JD123",
             "book_isbns": []
         }
     }
