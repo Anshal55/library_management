@@ -2,18 +2,19 @@ from library.library_class import Library
 from utils.operations import MenuOperation
 
 
-def perform_operation(library: Library, op_name: MenuOperation) -> bool:
+def perform_operation(library: Library, user_input_op: MenuOperation) -> bool:
     """
     Perform the library operation based on user input.
 
     Args:
-       op_name (MenuOperation): The user input representing the selected operation.
+       user_input_op (MenuOperation): The user input representing the selected operation.
+       library (Library): Clas instance of Library
 
     Returns:
        bool: True if the operation was successful, False otherwise.
     """
 
-    match op_name:
+    match user_input_op:
         case MenuOperation.ADD_BOOKS:
             library.add_book(*get_book_details())
         case MenuOperation.UPDATE_BOOKS:
@@ -32,6 +33,8 @@ def perform_operation(library: Library, op_name: MenuOperation) -> bool:
             library.update_user(user_id, **attributes)
         case MenuOperation.DELETE_USERS:
             library.delete_user(get_user_delete_details())
+        case MenuOperation.LIST_USERS:
+            library.list_users()
         case MenuOperation.SEARCH_USERS:
             library.search_users(**get_user_search_details())
         case MenuOperation.CHECK_OUT_BOOK:

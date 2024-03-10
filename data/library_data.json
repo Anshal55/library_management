@@ -1,15 +1,15 @@
 {
     "books": {
-        "AGG": {
-            "title": "Anne of Green Gables",
-            "author": "XYZ",
-            "isbn": "AGG",
+        "THUNK": {
+            "title": "The Hobbit",
+            "author": "UNK",
+            "isbn": "THUNK",
             "checked_out": false
         },
-        "TGG": {
-            "title": "The Great Gatsby",
-            "author": "F. Scott Fitzgerald",
-            "isbn": "TGG",
+        "AGGLMM": {
+            "title": "Anne of green gables",
+            "author": "LMM",
+            "isbn": "AGGLMM",
             "checked_out": false
         }
     },
@@ -17,13 +17,6 @@
         "AS123": {
             "name": "Anshal",
             "user_id": "AS123",
-            "book_isbns": [
-                "AGG"
-            ]
-        },
-        "J123": {
-            "name": "John Doe",
-            "user_id": "J123",
             "book_isbns": []
         }
     }

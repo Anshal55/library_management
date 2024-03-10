@@ -6,6 +6,16 @@ class UserInputManagement:
         pass
 
     def display_menu(self, options: list) -> int:
+        """
+        Display a menu with options and prompt the user for input.
+
+        Args:
+            options (list): List of menu options.
+
+        Returns:
+            int: User's choice.
+
+        """
         while True:
             print("\n".join(options))
             try:
@@ -18,8 +28,15 @@ class UserInputManagement:
                 print("Invalid input. Please enter a number.")
 
     def user_input(self) -> MenuOperation:
+        """
+        Get user input for the main menu.
+
+        Returns:
+            MenuOperation: User's selected operation.
+
+        """
         main_menu_options = [
-            "Library Management System",
+            "\nLibrary Management System",
             "1. Manage Books",
             "2. Manage Users",
             "3. Check-in/Check-out books",
@@ -43,8 +60,15 @@ class UserInputManagement:
             return MenuOperation.EXIT_PROGRAM
 
     def manage_books(self) -> MenuOperation:
+        """
+        Get user input for the 'Manage Books' submenu.
+
+        Returns:
+            MenuOperation: User's selected operation in 'Manage Books'.
+
+        """
         manage_books_options = [
-            "Manage Books",
+            "\nManage Books",
             "1. Add books",
             "2. Update books",
             "3. Delete books",
@@ -55,8 +79,15 @@ class UserInputManagement:
         return MenuOperation(int(str(1) + str(self.display_menu(manage_books_options))))
 
     def manage_users(self) -> MenuOperation:
+        """
+        Get user input for the 'Manage Users' submenu.
+
+        Returns:
+            MenuOperation: User's selected operation in 'Manage Users'.
+
+        """
         manage_users_options = [
-            "Manage Users",
+            "\nManage Users",
             "1. Add users",
             "2. Update users",
             "3. Delete users",
@@ -67,8 +98,15 @@ class UserInputManagement:
         return MenuOperation(int(str(2) + str(self.display_menu(manage_users_options))))
 
     def check_in_out_books(self) -> MenuOperation:
+        """
+        Get user input for the 'Check-in/Check-out books' submenu.
+
+        Returns:
+            MenuOperation: User's selected operation in 'Check-in/Check-out books'.
+
+        """
         check_inout_books_options = [
-            "Check-in/Check-out books",
+            "\nCheck-in/Check-out books",
             "1. Check-in a book",
             "2. Check-out a book",
             "3. Back to previous menu"
@@ -76,14 +114,28 @@ class UserInputManagement:
         return MenuOperation(int(str(3) + str(self.display_menu(check_inout_books_options))))
 
     def track_book_availability(self) -> MenuOperation:
+        """
+        Get user input for the 'Track book availability' submenu.
+
+        Returns:
+            MenuOperation: User's selected operation in 'Track book availability'.
+
+        """
         track_book_options = [
-            "Track book availability",
+            "\nTrack book availability",
             "1. Track a book",
             "2. Back to previous menu"
         ]
         return MenuOperation(int(str(4) + str(self.display_menu(track_book_options))))
 
     def get_information(self) -> MenuOperation:
+        """
+        Get user input for the 'Get information' submenu.
+
+        Returns:
+            MenuOperation: User's selected operation in 'Get information'.
+
+        """
         return MenuOperation.EXIT_PROGRAM
 
 

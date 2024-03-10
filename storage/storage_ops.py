@@ -1,7 +1,7 @@
 import json
 import os
 
-DATA_FILE_PATH = '../data/library_data.json'
+DATA_FILE_PATH = './data/library_data.json'
 
 
 def load_data():

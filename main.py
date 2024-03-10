@@ -1,27 +1,37 @@
 from utils.operations import MenuOperation
 from utils.inputs import UserInputManagement
+from library.library_manager import perform_operation
+from library.library_class import Library
 from typing import Final
 
-input_manager: Final[UserInputManagement] = UserInputManagement()
+# Instantiate user input object and library object here
+INPUT_MANAGER: Final[UserInputManagement] = UserInputManagement()
+LIBRARY: Final[Library] = Library()
 
 
-def run_operation(choice: int) -> None:
-    pass
-
-
+# Main function loop to act as the LMS start and end point
 def main():
     try:
         while True:
-            choice: MenuOperation = input_manager.user_input()
-            print(f"Choice input: {choice}")
+            choice: MenuOperation = INPUT_MANAGER.user_input()
 
             if choice == MenuOperation.EXIT_PROGRAM:
-                print("Thank you for using the LMS, See you!")
-                exit()
+                print("Thank you for using the LMS. See you!")
+                break
+
+            print(f"Input from user: {choice}")
+
+            # Pass the required operation to the function to be performed
+            op_completed: bool = perform_operation(LIBRARY, choice)
+
+    except KeyboardInterrupt:
+        print("\nUser interrupted. Exiting the LMS.")
 
     except Exception as e:
         print(f"\nAn error occurred: {str(e)}")
-        main()
+
+    finally:
+        print("Exiting the LMS.")
 
 
 if __name__ == "__main__":
