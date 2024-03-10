@@ -35,6 +35,9 @@ class MenuOperation(Enum):
     GET_INFO = 51
     PREVIOUS_MENU_INFO = 52  # Option to go back to previous menu from Information
 
+    # Exit operation
+    EXIT_PROGRAM = 500
+
 
 if __name__ == '__main__':
     # Accessing operations by name

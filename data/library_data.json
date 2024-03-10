@@ -1,0 +1,25 @@
+{
+    "books": {
+        "AGG": {
+            "title": "Anne of Green Gables",
+            "author": "XYZ",
+            "isbn": "AGG",
+            "checked_out": false
+        },
+        "TGG": {
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "isbn": "TGG",
+            "checked_out": true
+        }
+    },
+    "users": {
+        "J123": {
+            "name": "John Doe",
+            "user_id": "J123",
+            "book_isbns": [
+                "TGG"
+            ]
+        }
+    }
+}

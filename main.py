@@ -1,5 +1,8 @@
-from utils.inputs import user_input
 from utils.operations import MenuOperation
+from utils.inputs import UserInputManagement
+from typing import Final
+
+input_manager: Final[UserInputManagement] = UserInputManagement()
 
 
 def run_operation(choice: int) -> None:
@@ -9,10 +12,11 @@ def run_operation(choice: int) -> None:
 def main():
     try:
         while True:
-            choice: MenuOperation = user_input()
+            choice: MenuOperation = input_manager.user_input()
             print(f"Choice input: {choice}")
 
-            if choice == 6:
+            if choice == MenuOperation.EXIT_PROGRAM:
+                print("Thank you for using the LMS, See you!")
                 exit()
 
     except Exception as e:
