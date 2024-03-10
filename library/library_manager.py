@@ -44,9 +44,9 @@ def perform_operation(library: Library, user_input_op: MenuOperation) -> bool:
         case MenuOperation.TRACK_BOOK:
             library.track_book(get_book_isbn())
         case MenuOperation.GET_INFO:
-            print("Not Implemented")
+            print("Not Implemented, for later user")
         case _:
-            print("Unexpected input")
+            print("Unexpected input, Please try again!")
 
     return True
 

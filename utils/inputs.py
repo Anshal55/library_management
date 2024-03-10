@@ -41,8 +41,7 @@ class UserInputManagement:
             "2. Manage Users",
             "3. Check-in/Check-out books",
             "4. Track book availability",
-            "5. Not implemented (will exit)",
-            "6. Exit"
+            "5. Exit"
         ]
         selection = self.display_menu(main_menu_options)
 
@@ -55,8 +54,6 @@ class UserInputManagement:
         elif selection == 4:
             return self.track_book_availability()
         elif selection == 5:
-            return self.get_information()
-        elif selection == 6:
             return MenuOperation.EXIT_PROGRAM
 
     def manage_books(self) -> MenuOperation:
