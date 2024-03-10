@@ -2,6 +2,7 @@ from entities.book import Book
 from entities.user import User
 from storage.storage_ops import load_data, save_data_to_file
 from uuid import uuid4
+from utils.logger import logging
 
 
 class Library:
@@ -32,6 +33,9 @@ class Library:
 
         # Load data from storage during initialization
         self.load_data()
+
+        # logger instance
+        self.logger = logging.getLogger(__name__)
 
     def load_data(self):
         """
@@ -78,16 +82,19 @@ class Library:
         self.books[isbn] = new_book
         self.save_data()
 
+        # Log the book addition
+        self.logger.info(f"\nBook added: Title - {title}, Author - {author}, ISBN - {isbn}")
+
     def list_books(self):
         """
         List all books in the library.
         """
         if not self.books:
-            print("No books available in the library.")
+            self.logger.info("No books available in the library.")
             return
 
-        for book in self.books.values():
-            print(f"Title: {book.title}, Author: {book.author}, ISBN: {book.isbn}")
+        for count, book in enumerate(self.books.values()):
+            self.logger.info(f"{count + 1}: Title - {book.title}, Author - {book.author}, ISBN - {book.isbn}")
 
     def delete_book(self, isbn):
         """
@@ -98,10 +105,10 @@ class Library:
         """
         if isbn in self.books:
             del self.books[isbn]
-            print(f"Book with ISBN {isbn} has been deleted.")
+            self.logger.info(f"Book with ISBN {isbn} has been deleted.")
             self.save_data()
         else:
-            print(f"No book found with ISBN {isbn}.")
+            self.logger.warning(f"No book found with ISBN {isbn}.")
 
     def update_book(self, isbn, **attributes):
         """
@@ -115,10 +122,10 @@ class Library:
             book = self.books[isbn]
             for key, value in attributes.items():
                 setattr(book, key, value)
-            print(f"Book with ISBN {isbn} has been updated.")
+            self.logger.info(f"Book with ISBN {isbn} has been updated.")
             self.save_data()
         else:
-            print(f"No book found with ISBN {isbn}.")
+            self.logger.warning(f"No book found with ISBN {isbn}.")
 
     def search_books(self, **attributes):
         """
@@ -128,7 +135,7 @@ class Library:
             **attributes: Keyword arguments representing the book attributes to search for.
         """
         if not attributes:
-            print("Please provide at least one attribute to search for.")
+            self.logger.warning("Please provide at least one attribute to search for.")
             return
 
         found_books = []
@@ -137,11 +144,12 @@ class Library:
                 found_books.append(book)
 
         if not found_books:
-            print("No books found with the specified attributes.")
+            self.logger.warning("No books found with the specified attributes.")
             return
 
-        for found_book in found_books:
-            print(f"Title: {found_book.title}, Author: {found_book.author}, ISBN: {found_book.isbn}")
+        for count, found_book in enumerate(found_books):
+            self.logger.info(
+                f"{count + 1}: Title: {found_book.title}, Author: {found_book.author}, ISBN: {found_book.isbn}")
 
     def add_user(self, name, user_id=None):
         """
@@ -170,11 +178,11 @@ class Library:
         List all users in the library.
         """
         if not self.users:
-            print("No users registered in the library.")
+            self.logger.warning("No users registered in the library.")
             return
 
-        for user in self.users.values():
-            print(f"Name: {user.name}, User ID: {user.user_id}")
+        for count, user in enumerate(self.users.values()):
+            self.logger.info(f"{count + 1}: Name: {user.name}, User ID: {user.user_id}")
 
     def delete_user(self, user_id):
         """
@@ -185,10 +193,10 @@ class Library:
         """
         if user_id in self.users:
             del self.users[user_id]
-            print(f"User with ID {user_id} has been deleted.")
+            self.logger.info(f"User with ID {user_id} has been deleted.")
             self.save_data()
         else:
-            print(f"No user found with ID {user_id}.")
+            self.logger.warning(f"No user found with ID {user_id}.")
 
     def update_user(self, user_id, **attributes):
         """
@@ -202,10 +210,10 @@ class Library:
             user = self.users[user_id]
             for key, value in attributes.items():
                 setattr(user, key, value)
-            print(f"User with ID {user_id} has been updated.")
+            self.logger.info(f"User with ID {user_id} has been updated.")
             self.save_data()
         else:
-            print(f"No user found with ID {user_id}.")
+            self.logger.warning(f"No user found with ID {user_id}.")
 
     def search_users(self, **attributes):
         """
@@ -215,7 +223,7 @@ class Library:
             **attributes: Keyword arguments representing the user attributes to search for.
         """
         if not attributes:
-            print("Please provide at least one attribute to search for.")
+            self.logger.error("Please provide at least one attribute to search for.")
             return
 
         found_users = []
@@ -224,11 +232,11 @@ class Library:
                 found_users.append(user)
 
         if not found_users:
-            print("No users found with the specified attributes.")
+            self.logger.warning("No users found with the specified attributes.")
             return
 
-        for found_user in found_users:
-            print(f"Name: {found_user.name}, User ID: {found_user.user_id}")
+        for count, found_user in enumerate(found_users):
+            self.logger.info(f"{count + 1}: Name: {found_user.name}, User ID: {found_user.user_id}")
 
     def check_out_book(self, user_id, isbn):
         """
@@ -245,11 +253,11 @@ class Library:
             if not book.checked_out:
                 user.book_isbns.append(isbn)
                 book.checked_out = True
-                print(f"Book with ISBN {isbn} has been checked out to user {user_id}.")
+                self.logger.info(f"Book with ISBN {isbn} has been checked out to user {user_id}.")
             else:
-                print(f"Book with ISBN {isbn} is already checked out.")
+                self.logger.warning(f"Book with ISBN {isbn} is already checked out.")
         else:
-            print(f"No user found with ID {user_id} or no book found with ISBN {isbn}.")
+            self.logger.warning(f"No user found with ID {user_id} or no book found with ISBN {isbn}.")
 
     def check_in_book(self, user_id, isbn):
         """
@@ -266,11 +274,11 @@ class Library:
             if isbn in user.book_isbns:
                 user.book_isbns.remove(isbn)
                 book.checked_out = False
-                print(f"Book with ISBN {isbn} has been checked in from user {user_id}.")
+                self.logger.info(f"Book with ISBN {isbn} has been checked in from user {user_id}.")
             else:
-                print(f"Book with ISBN {isbn} is not checked out to user {user_id}.")
+                self.logger.warning(f"Book with ISBN {isbn} is not checked out to user {user_id}.")
         else:
-            print(f"No user found with ID {user_id} or no book found with ISBN {isbn}.")
+            self.logger.warning(f"No user found with ID {user_id} or no book found with ISBN {isbn}.")
 
     def track_book(self, book_isbn: str) -> bool:
         """
@@ -289,10 +297,10 @@ class Library:
 
             if not book.checked_out:
                 is_available = True
-                print(f"Book with ISBN: {book_isbn} is available")
+                self.logger.info(f"Book with ISBN: {book_isbn} is available")
 
         if not is_available:
-            print(f"Book with ISBN: {book_isbn} is not available")
+            self.logger.warning(f"Book with ISBN: {book_isbn} is not available")
 
         return is_available
 

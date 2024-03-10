@@ -36,12 +36,12 @@ class UserInputManagement:
 
         """
         main_menu_options = [
-            "\nLibrary Management System",
+            "\nMain menu (Enter a choice):",
             "1. Manage Books",
             "2. Manage Users",
             "3. Check-in/Check-out books",
             "4. Track book availability",
-            "5. Get information",
+            "5. Not implemented (will exit)",
             "6. Exit"
         ]
         selection = self.display_menu(main_menu_options)
@@ -68,7 +68,7 @@ class UserInputManagement:
 
         """
         manage_books_options = [
-            "\nManage Books",
+            "\nManage Books (Enter a choice):",
             "1. Add books",
             "2. Update books",
             "3. Delete books",
@@ -87,7 +87,7 @@ class UserInputManagement:
 
         """
         manage_users_options = [
-            "\nManage Users",
+            "\nManage Users (Enter a choice):",
             "1. Add users",
             "2. Update users",
             "3. Delete users",
@@ -106,7 +106,7 @@ class UserInputManagement:
 
         """
         check_inout_books_options = [
-            "\nCheck-in/Check-out books",
+            "\nCheck-in/Check-out books (Enter a choice):",
             "1. Check-in a book",
             "2. Check-out a book",
             "3. Back to previous menu"
@@ -122,7 +122,7 @@ class UserInputManagement:
 
         """
         track_book_options = [
-            "\nTrack book availability",
+            "\nTrack book availability (Enter a choice):",
             "1. Track a book",
             "2. Back to previous menu"
         ]

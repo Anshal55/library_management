@@ -7,9 +7,21 @@
             "checked_out": false
         },
         "AGGLMM": {
-            "title": "Anne of green gables",
+            "title": "Anne",
             "author": "LMM",
             "isbn": "AGGLMM",
+            "checked_out": false
+        },
+        "ITPJD": {
+            "title": "Introduction to Python",
+            "author": "Jane Doe",
+            "isbn": "ITPJD",
+            "checked_out": false
+        },
+        "LOTRUNK": {
+            "title": "LOTR",
+            "author": "UNK",
+            "isbn": "LOTRUNK",
             "checked_out": false
         }
     },
@@ -17,6 +29,11 @@
         "AS123": {
             "name": "Anshal",
             "user_id": "AS123",
+            "book_isbns": []
+        },
+        "JD123": {
+            "name": "John Doe",
+            "user_id": "JD123",
             "book_isbns": []
         }
     }
