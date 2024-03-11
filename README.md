@@ -4,9 +4,13 @@ The Library Management System (LMS) is a simple yet powerful library management 
 
 ## Table of Contents
 
-- [Features](#features)
-- [Usage](#usage)
-- [File Structure](#file-structure)
+- [Library Management System (LMS)](#library-management-system-lms)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Usage](#usage)
+  - [File Structure](#file-structure)
+    - [Folder Structure](#folder-structure)
+    - [TODO:](#todo)
 
 ## Features
 
@@ -87,3 +91,9 @@ The Library Management System (LMS) is a simple yet powerful library management 
 
 - **main.py:**
   Serves as the start and end point for invoking the Library Management System.
+
+
+### TODO:
+1. Improve the structure further.
+2. Can use database in place of file.
+3. Can introduce UI for management.
