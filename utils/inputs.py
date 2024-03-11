@@ -16,16 +16,16 @@ class UserInputManagement:
             int: User's choice.
 
         """
-        while True:
-            print("\n".join(options))
-            try:
-                choice = int(input("\nEnter your choice: "))
-                if 1 <= choice <= len(options):
-                    return choice
-                else:
-                    print("Invalid choice. Please enter a number within the range.")
-            except ValueError:
-                print("Invalid input. Please enter a number.")
+        # while True:
+        print("\n".join(options))
+        try:
+            choice = int(input("\nEnter your choice: "))
+            if 1 <= choice <= len(options):
+                return choice
+            else:
+                print("Invalid choice. Please enter a number within the range.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
     def user_input(self) -> MenuOperation:
         """
