@@ -331,7 +331,7 @@ if __name__ == '__main__':
 
     l1.add_book("The Great Gatsby", "F. Scott Fitzgerald", "TGG")
     l1.add_user("John Doe", "J123")
-    l1.check_out_book("J123", "TGG")  # Replace "generated_isbn" with the actual ISBN
+    l1.check_out_book("J123", "TGG")
     l1.list_books()
     l1.list_users()
     l1.check_in_book("J123", "TGG")
